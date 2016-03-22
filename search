@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+
+class Search(object):
+
+    """Docstring for Search. """
+
+    def __init__(self):
+        """@todo: to be defined1. """
+        super(Search, self).__init__()
+
+
