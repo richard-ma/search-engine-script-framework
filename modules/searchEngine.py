@@ -17,7 +17,12 @@ class SearchEngine(object):
         self.url = "" # 必须在子类中设置
         # self.url_reg = r'<li class="b_algo"><h2><a href="(.*?)" target="_blank"' # 必须在子类设置
         self.url_reg = r'' # 必须在子类设置
-        self.headers = {} # HTTP请求头，可使用父类默认值
+        self.headers = {
+                'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:45.0) Gecko/20100101 Firefox/45.0',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Accept-Language': 'zh-CN,en-US;q=0.7,en;q=0.3',
+                'Accept-Encoding': 'gzip, deflate',
+                } # HTTP请求头，可使用父类默认值
         self.cookies = {} # HTTP cookie，可使用父类默认值
 
         self.timeout = 1 # 请求超时，超过此数值则判定服务器无响应，终止本次连接，可使用父类默认值
