@@ -35,10 +35,18 @@ class SearchEngine(object):
 
         self.beforeSearch()
 
+        # DEBUG: 输出关键字
+        print '[*] Searching: %s' % keyword
+
         all_url = []
         newpage_url = []
         while 1:
             if self.page_count / self.count_per_page + 1 < int(total_page):
+                # DEBUG: 下载进度
+                print '[*] Downloading %s/%s' % (
+                        self.page_count/self.count_per_page + 1,
+                        total_page)
+
                 url = self.url % (keyword, self.page_count)
                 self.page_count += self.count_per_page # 加上每页链接数，即为下一页的其实链接编号
                 try:
@@ -54,14 +62,15 @@ class SearchEngine(object):
                     all_url = [i for i in set(all_url)] # 去除重复地址
                 except:
                     # DEBUG: 输出获取页面失败
+                    print '[*] Get content failed: %s' % url
                     continue
             else:
-                #DEBUG: 输出page_count
+                #DEBUG: 输出链接数量
+                print '[*] Get %d link(s)' % len(all_url)
                 break;
 
-        self.writeToFile(all_url, self.genFilename(keyword))
-
         self.afterSearch()
+        self.writeToFile(all_url, self.genFilename(keyword))
 
     def beforeSearch(self):
         """ 搜索之前要处理的事项
@@ -98,6 +107,8 @@ class SearchEngine(object):
         f = open(filename, 'a')
         f.writelines(['%s\n' % x for x in all_url])
         f.close()
+        # DEBUG: 输出文件名
+        print '[*] %s saved.' % filename
 
     def findAllUrl(self, content):
         """ 筛选页面中的url链接
