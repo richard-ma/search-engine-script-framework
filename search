@@ -13,3 +13,9 @@ if __name__ == '__main__':
         search_engine_module = __import__(module_name)
         search_engine_class = getattr(search_engine_module, module_name)
         search_engine_class().search(keyword, page)
+    else:
+        print "Usage:"
+        print "search (search_engine) (keyword) (page)" 
+        print ""
+        print "Example:"
+        print "search bing shoes 3" 
