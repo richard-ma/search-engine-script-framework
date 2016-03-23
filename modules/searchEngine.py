@@ -41,14 +41,14 @@ class SearchEngine(object):
         all_url = []
         newpage_url = []
         while 1:
-            if self.page_count / self.count_per_page + 1 < int(total_page):
+            if self.page_count / self.count_per_page + 1 <= int(total_page):
                 # DEBUG: 下载进度
                 print '[*] Downloading %s/%s' % (
                         self.page_count/self.count_per_page + 1,
                         total_page)
+                self.page_count += self.count_per_page # 加上每页链接数，即为下一页的其实链接编号
 
                 url = self.url % (keyword, self.page_count)
-                self.page_count += self.count_per_page # 加上每页链接数，即为下一页的其实链接编号
                 try:
                     # DEBUG: 输出请求信息
                     response = requests.get(
