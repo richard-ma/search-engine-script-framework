@@ -32,6 +32,9 @@ class SearchEngine(object):
         :returns: 搜索结果连接list
 
         """
+
+        self.beforeSearch()
+
         all_url = []
         newpage_url = []
         while 1:
@@ -57,6 +60,8 @@ class SearchEngine(object):
                 break;
 
         self.writeToFile(all_url, self.genFilename(keyword))
+
+        self.afterSearch()
 
     def beforeSearch(self):
         """ 搜索之前要处理的事项
