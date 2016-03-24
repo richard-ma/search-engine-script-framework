@@ -49,7 +49,7 @@ class SearchEngine(object):
         newpage_url = []
         while 1:
             if self.page_count / self.count_per_page + 1 <= int(total_page):
-                time.sleep(random.uniform(5, 10)
+                time.sleep(random.uniform(5, 10))
                 # DEBUG: 下载进度
                 print '[*] Downloading %s/%s' % (
                         self.page_count/self.count_per_page + 1,
