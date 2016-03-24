@@ -6,6 +6,8 @@ import sys
 if __name__ == '__main__':
     if len(sys.argv) == 4:
         search_engine, keyword, page = sys.argv[1:4]
+        if keyword == 'D': # 用D代表分类目录引擎
+            keyword = None
         # DEBUG: 输出参数
         #print "search_engine:%s keyword:%s page:%s" % (search_engine, keyword, page)
         module_name = 'SE'+search_engine
@@ -19,3 +21,4 @@ if __name__ == '__main__':
         print ""
         print "Example:"
         print "search bing shoes 3" 
+        print "search aramy D 50"

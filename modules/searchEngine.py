@@ -3,6 +3,8 @@
 
 import requests
 import re
+import time
+import random
 
 class SearchEngine(object):
 
@@ -47,13 +49,18 @@ class SearchEngine(object):
         newpage_url = []
         while 1:
             if self.page_count / self.count_per_page + 1 <= int(total_page):
+                time.sleep(random.uniform(5, 10)
                 # DEBUG: 下载进度
                 print '[*] Downloading %s/%s' % (
                         self.page_count/self.count_per_page + 1,
                         total_page)
                 self.page_count += self.count_per_page # 加上每页链接数，即为下一页的其实链接编号
 
-                url = self.url % (keyword, self.page_count)
+                if keyword == None:
+                    url = self.url % (self.page_count) # 添加对分类目录式引擎支持，只更新页码，无关键字
+                else:
+                    url = self.url % (keyword, self.page_count)
+
                 try:
                     # DEBUG: 输出请求信息
                     response = requests.get(
