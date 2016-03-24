@@ -21,4 +21,4 @@ if __name__ == '__main__':
         print ""
         print "Example:"
         print "search bing shoes 3" 
-        print "search aramy D 50"
+        print "search amray D 50"
