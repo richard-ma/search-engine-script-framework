@@ -31,6 +31,15 @@ class SearchEngine(object):
         self.page_count = 1 # 下载链接计数，可使用父类默认值
         self.count_per_page = 10 # 每页链接数量，可使用父类默认值
 
+    def preProcess(self, keyword):
+        """@todo: 预处理关键字
+
+        :keyword: @todo
+        :returns: @todo
+
+        """
+        return keyword
+
     def search(self, keyword, total_page):
         """ 搜索并保存搜索结果连接
 
@@ -41,6 +50,8 @@ class SearchEngine(object):
         """
 
         self.beforeSearch()
+        # 预处理关键字，将关键字变为url形式
+        keyword = self.preProcess(keyword)
 
         # DEBUG: 输出关键字
         print '[*] Searching: %s' % keyword

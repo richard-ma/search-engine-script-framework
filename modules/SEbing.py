@@ -25,6 +25,9 @@ class SEbing(SearchEngine):
         #self.page_count = 1 # 下载链接计数，可使用父类默认值
         #self.count_per_page = 10 # 每页链接数量，可使用父类默认值
 
+    def preProcess(self, keyword):
+        return keyword.replace(' ', '+')
+
 if __name__ == '__main__':
     se = SEbing()
     se.search('test', 2)
