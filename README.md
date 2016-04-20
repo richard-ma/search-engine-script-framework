@@ -1,1 +1,1 @@
-# search-engine-script-framework## Usagesearch (search_engine) (keyword) (page)Example:search bing shoes 3search amray D 50## Available Search Engine* bing* mojeek* ezilon* amray D
+# search-engine-script-framework## Usagesearch (search_engine) (keyword) (page)Example:search bing shoes 3search amray D 50## Available Search Engine* bing* mojeek* ezilonau* ezilonusa* amray D

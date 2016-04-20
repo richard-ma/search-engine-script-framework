@@ -9,14 +9,14 @@ from urllib import quote
 
 from searchEngine import SearchEngine
 
-class SEezilon(SearchEngine):
+class SEezilonusa(SearchEngine):
 
     def __init__(self):
-        super(SEezilon, self).__init__()
+        super(SEezilonusa, self).__init__()
 
-        self.engineName = "ezilon"
+        self.engineName = "ezilon usa"
         # self.url = "http://cn.ezilon.com/search?q=%s&first=%d" # 搜索引擎地址 %s for keyword ! %d for page
-        self.url = "http://find.ezilon.com/search.php?q=%s&start=%d&t=&v=au&f="
+        self.url = "http://find.ezilon.com/search.php?q=%s&start=%d&t=&v=usa&f="
         self.url_reg = r'.</span>\s<a href="(.*?)">' # 必须在子类设置
         #self.headers = {} # HTTP请求头，可使用父类默认值
         #self.cookies = {} # HTTP cookie，可使用父类默认值
@@ -29,5 +29,5 @@ class SEezilon(SearchEngine):
         return keyword.replace(' ', '+')
 
 if __name__ == '__main__':
-    se = SEezilon()
+    se = SEezilonusa()
     se.search('test', 2)
