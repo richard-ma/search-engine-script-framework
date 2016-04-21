@@ -14,7 +14,7 @@ class SEezilonusa(SearchEngine):
     def __init__(self):
         super(SEezilonusa, self).__init__()
 
-        self.engineName = "ezilon usa"
+        self.engineName = "ezilon-usa"
         # self.url = "http://cn.ezilon.com/search?q=%s&first=%d" # 搜索引擎地址 %s for keyword ! %d for page
         self.url = "http://find.ezilon.com/search.php?q=%s&start=%d&t=&v=usa&f="
         self.url_reg = r'.</span>\s<a href="(.*?)">' # 必须在子类设置
