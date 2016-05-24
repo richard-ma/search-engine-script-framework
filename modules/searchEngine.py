@@ -5,6 +5,7 @@ import requests
 import re
 import time
 import random
+import urllib
 
 class SearchEngine(object):
 
@@ -142,5 +143,6 @@ class SearchEngine(object):
         """
         onepage_url = []
         onepage_url = re.findall(self.url_reg, content)
+        onepage_url = [urllib.splithost(urllib.splittype(x)[1])[0] for x in onepage_url] # URL转换为域名
         return onepage_url
 
