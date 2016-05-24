@@ -22,7 +22,7 @@ if __name__ == '__main__':
         search_engine_class().search(keyword, page)
     else:
         print "Usage:"
-        print "search (search_engine) (keyword) (page)" 
+        print "search (search_engine) (keyword) [page]" 
         print ""
         print "Example:"
         print "search bing shoes 3" 
