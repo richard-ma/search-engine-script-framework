@@ -32,6 +32,8 @@ class SearchEngine(object):
         self.page_count = 1 # 下载链接计数，可使用父类默认值
         self.count_per_page = 10 # 每页链接数量，可使用父类默认值
 
+        self.all_url = [] # 最终结果
+
     def preProcess(self, keyword):
         """@todo: 预处理关键字
 
@@ -57,7 +59,6 @@ class SearchEngine(object):
         # DEBUG: 输出关键字
         print '[*] Searching: %s' % keyword
 
-        all_url = []
         newpage_url = []
         while 1:
             if self.page_count / self.count_per_page + 1 <= int(total_page):
@@ -82,19 +83,19 @@ class SearchEngine(object):
                             timeout=self.timeout)
                     content = response.content
                     newpage_url = self.findAllUrl(content)
-                    all_url.extend(newpage_url)
-                    all_url = [i for i in set(all_url)] # 去除重复地址
+                    self.all_url.extend(newpage_url)
+                    self.all_url = [i for i in set(self.all_url)] # 去除重复地址
                 except:
                     # DEBUG: 输出获取页面失败
                     print '[*] Get content failed: %s' % url
                     continue
             else:
                 #DEBUG: 输出链接数量
-                print '[*] Get %d link(s)' % len(all_url)
+                print '[*] Get %d link(s)' % len(self.all_url)
                 break;
 
         self.afterSearch()
-        self.writeToFile(all_url, self.genFilename(keyword))
+        self.writeToFile(self.all_url, self.genFilename(keyword))
 
     def beforeSearch(self):
         """ 搜索之前要处理的事项
@@ -143,6 +144,6 @@ class SearchEngine(object):
         """
         onepage_url = []
         onepage_url = re.findall(self.url_reg, content)
-        onepage_url = [urllib.splithost(urllib.splittype(x)[1])[0] for x in onepage_url] # URL转换为域名
+        #onepage_url = [urllib.splithost(urllib.splittype(x)[1])[0] for x in onepage_url] # URL转换为域名
         return onepage_url
 
