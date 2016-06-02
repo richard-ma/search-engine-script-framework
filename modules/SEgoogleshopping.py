@@ -5,7 +5,7 @@ import requests
 import re
 import sys
 import time
-from urllib import quote
+import urllib
 
 from searchEngine import SearchEngine
 
@@ -29,8 +29,21 @@ class SEgoogleshopping(SearchEngine):
         return keyword.replace(' ', '+')
 
     def afterSearch(self):
-        self.all_url = ['https://www.google.com/%s' % x for x in self.all_url]
-        print self.all_url
+
+        self.all_url = [x for x in self.all_url if re.search('adurl', x)]
+
+        real_urls = []
+        for url in self.all_url:
+            real_url = re.findall(r'adurl=(http[s]?://.*?/)', url)
+            #print 'real_url:' +  str(real_url)
+            real_urls.extend(real_url)
+
+        real_urls = [x for x in set(real_urls)] # 去除重复地址
+        #print 'real_urls:' + str(real_urls)
+
+        self.all_url = real_urls
+
+        print '[*] Writing to file: %d link(s).' % len(self.all_url)
 
 if __name__ == '__main__':
     se = SEgoogleshopping()
