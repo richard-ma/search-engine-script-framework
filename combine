@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
+import os
+import re
+
+result_filename = 'result.csv'
+
+files = [x for x in os.listdir('.') if re.search(r'.*\.csv', x)]
+
+# 读文件
+results = []
+for filename in files:
+    if filename == result_filename:
+        continue
+
+    print '[*] Merging %s.' % filename
+    with open(filename, 'r') as f:
+        contents = f.readlines()
+        contents = [x.strip('\n') for x in contents]
+        results.extend(contents)
+
+results = [x for x in set(results)] # 去重
+results = sorted(results)
+
+#print results
+
+# 写文件
+with open(result_filename, 'w') as f:
+    for result in results:
+        f.write(result)
+        f.write('\n')
+
+print '[*] All files merged.'
