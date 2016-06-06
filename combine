@@ -10,15 +10,20 @@ files = [x for x in os.listdir('.') if re.search(r'.*\.csv', x)]
 
 # 读文件
 results = []
+idx = 1
+file_total = len(files)
 for filename in files:
     if filename == result_filename:
+        print '[*] %d/%d Skipping %s.' % (idx, file_total, filename)
+        idx = idx + 1
         continue
 
-    print '[*] Merging %s.' % filename
+    print '[*] %d/%d Merging %s.' % (idx, file_total, filename)
     with open(filename, 'r') as f:
         contents = f.readlines()
         contents = [x.strip('\n') for x in contents]
         results.extend(contents)
+    idx = idx + 1
 
 results = [x for x in set(results)] # 去重
 results = sorted(results)
