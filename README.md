@@ -49,6 +49,7 @@
 
 *在keywords文件中每行一条关键字
 *可直接双击search.bat文件进行搜索
+*可直接双击schedule.bat文件进行定时执行
 
 ### 工作目录
 
