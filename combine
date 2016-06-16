@@ -3,8 +3,9 @@
 
 import os
 import re
+import datetime
 
-result_filename = 'result.csv'
+result_filename = "result_%s.csv" % (datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
 
 files = [x for x in os.listdir('.') if re.search(r'.*\.urls', x)]
 
