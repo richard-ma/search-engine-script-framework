@@ -119,7 +119,7 @@ class SearchEngine(object):
 
         """
         # 文件名keyword_bing.urls
-        return "%s_%s.csv" % (keyword, self.engineName)
+        return "%s_%s.urls" % (keyword, self.engineName)
 
     def writeToFile(self, all_url, filename):
         """@todo: 将结果保存到文件

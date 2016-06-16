@@ -6,18 +6,13 @@ import re
 
 result_filename = 'result.csv'
 
-files = [x for x in os.listdir('.') if re.search(r'.*\.csv', x)]
+files = [x for x in os.listdir('.') if re.search(r'.*\.urls', x)]
 
 # 读文件
 results = []
 idx = 1
 file_total = len(files)
 for filename in files:
-    if filename == result_filename:
-        print '[*] %d/%d Skipping %s.' % (idx, file_total, filename)
-        idx = idx + 1
-        continue
-
     print '[*] %d/%d Merging %s.' % (idx, file_total, filename)
     with open(filename, 'r') as f:
         contents = f.readlines()

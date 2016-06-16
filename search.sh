@@ -5,5 +5,5 @@ basepath=$(cd `dirname $0`; pwd)
 cd $basepath
 
 cat ./keywords | while read line; do
-    ./search googleshopping "$line" 10
+    ./search googleshopping "$line" 3
 done
