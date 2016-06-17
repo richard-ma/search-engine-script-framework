@@ -36,12 +36,17 @@
 
 ### CentOS下安装
 
-### 升级pip并安装requests库
+#### 安装pip
 
-#### 升级pip并安装requests库
+* yum install epel-release
+* yum install python-pip
+* yum install python-devel libffi-devel openssl-devel
+
+### 升级pip并安装requests库
 
 * pip install --upgrade pip
 * pip install requests
+* pip install pyopenssl ndg-httpsclient pyasn1
 
 ![升级pip并安装requests库](./images/pip.jpg)
 
@@ -51,9 +56,14 @@
 
 #### Windows
 
-*在keywords文件中每行一条关键字
-*可直接双击search.bat文件进行搜索
-*可直接双击schedule.bat文件进行定时执行
+* 在`keywords`文件中每行一条关键字
+* 可直接双击`search.bat`文件进行搜索
+* 可直接双击`schedule.bat`文件进行定时执行
+
+#### CentOS
+
+* 在`keywords`文件中每行一条关键字
+* `./search.sh`即可开始搜索
 
 ### 工作目录
 
