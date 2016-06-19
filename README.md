@@ -40,7 +40,7 @@
 
 * yum install epel-release
 * yum install python-pip
-* yum install python-devel libffi-devel openssl-devel
+* yum install python-devel libffi-devel openssl-devel gcc unzip
 
 ### 升级pip并安装requests库
 
