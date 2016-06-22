@@ -2,7 +2,7 @@
 
 current_dir=`pwd`
 current_user='root'
-current_command=$current_dir/search.sh
+current_command="$current_dir/search.sh"
 
 if [ $# != 3 ]; then
     echo "You give $# time~~~~~"
@@ -10,13 +10,15 @@ if [ $# != 3 ]; then
     exit 1
 fi
 
+sed -i.bak -e "/$current_command/d" /etc/crontab
+
 for time in $@; do
     min=`echo $time | cut -d : -f 2`
     hour=`echo $time | cut -d : -f 1`
-    echo $hour:$min
-    message="$min $hour * * * $current_user $current_command"
+    #echo $hour:$min
+    message="$min $hour * * * $current_user . /etc/profile; . ~/.bash_profile; $current_command"
     set -f
-    echo $message
+    #echo $message
     echo $message >> /etc/crontab
     set +f
 done
