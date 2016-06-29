@@ -5,7 +5,9 @@ import os
 import re
 import datetime
 
-result_filename = "result_%s.csv" % (datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
+date_string = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+result_filename = "result_%s.csv" % (date_string)
+filter_filename = "filterd_%s.csv" % (date_string)
 
 files = [x for x in os.listdir('.') if re.search(r'.*\.urls', x)]
 
@@ -26,10 +28,28 @@ results = sorted(results)
 
 #print results
 
-# 写文件
+# 写爬行结果文件
 with open(result_filename, 'w') as f:
     for result in results:
         f.write(result)
         f.write('\n')
 
-print '[*] All files merged.'
+print '[*] All files merged. -> %s' % (result_filename)
+
+# 过滤
+base_filename = './website.csv'
+base_sites = []
+with open(base_filename, 'r') as f:
+    base_sites = f.readlines()
+    base_sites = [x.strip('\n') for x in base_sites]
+
+filtered = [x for x in set(results) - set(base_sites)]
+filtered = sorted(filtered)
+
+# 写过滤结果文件
+with open(filter_filename, 'w') as f:
+    for line in filtered:
+        f.write(line)
+        f.write('\n')
+
+print '[*] All urls filtered. -> %s' % (filter_filename)
