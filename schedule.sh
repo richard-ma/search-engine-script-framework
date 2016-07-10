@@ -4,9 +4,14 @@ current_dir=`pwd`
 current_user='root'
 current_command="$current_dir/search.sh"
 
-if [ $# != 3 ]; then
+if [ $# > 6 ]; then
     echo "You give $# time~~~~~"
-    echo 'You must give 3 time!'
+    echo 'You must give less than 6!'
+    exit 1
+fi
+if [ $# < 1 ]; then
+    echo "You give $# time~~~~~"
+    echo 'You must give at least 1!'
     exit 1
 fi
 
