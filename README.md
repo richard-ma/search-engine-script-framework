@@ -50,6 +50,11 @@
 
 ![升级pip并安装requests库](./images/pip.jpg)
 
+### 赋予响应权限
+
+* 进入软件所在目录
+* chmod +x ./search ./search.sh ./combine ./schedule.sh
+
 ## 使用
 
 ### 图形化界面
