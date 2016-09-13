@@ -32,6 +32,8 @@ class SearchEngine(object):
         self.page_count = 1 # 下载链接计数，可使用父类默认值
         self.count_per_page = 10 # 每页链接数量，可使用父类默认值
 
+        self.debug = False # DEBUG模式
+
     def preProcess(self, keyword):
         """@todo: 预处理关键字
 
@@ -81,6 +83,9 @@ class SearchEngine(object):
                             cookies=self.cookies,
                             timeout=self.timeout)
                     content = response.content
+                    if self.debug:
+                        print 'DEBUG::content'
+                        print content
                     newpage_url = self.findAllUrl(content)
                     all_url.extend(newpage_url)
                     all_url = [i for i in set(all_url)] # 去除重复地址
