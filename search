@@ -20,6 +20,11 @@ if __name__ == '__main__':
         search_engine_module = __import__(module_name)
         search_engine_class = getattr(search_engine_module, module_name)
         search_engine_class().search(keyword, page)
+    # list all search engine plugins
+    #elif len(sys.argv) == 2:
+        #if sys.argv[1] == 'list':
+            #print 'list command'
+            #sys.path.append('./modules')
     else:
         print "Usage:"
         print "search (search_engine) (keyword) [page]" 
